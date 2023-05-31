@@ -1,51 +1,87 @@
-import React, { useState, useEffect } from "react";
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import "./App.css"
+import Home from "./components/Home";
+import CreateDB from "./components/CreateDB";
+import DropDB from './components/DropDB';
+import InsertOne from "./components/InsertOne";
+import InsertMany from "./components/InsertMany";
+import DeleteOne from "./components/DeleteOne";
+import DeleteMany from "./components/DeleteMany";
+import UpdateData from "./components/UpdateData";
+import NoPage from "./components/NoPage";
+
 
 function App() {
-  const [message, setMessage] = useState("");
-  function findOne(){
-    fetch("http://localhost:8080/message").then((res) => res.json()).then((data) => setMessage(data.message));
-  }
-  function findMany(){
-    fetch("http://localhost:8080/message").then((res) => res.json()).then((data) => setMessage(data.message));
-  }
-  function deleteOne(){
-    fetch("http://localhost:8080/message").then((res) => res.json()).then((data) => setMessage(data.message));
-  }
-  function deleteMany(){
-    fetch("http://localhost:8080/message").then((res) => res.json()).then((data) => setMessage(data.message));
-  }
-  function insertOne(){
-    fetch("http://localhost:8080/message").then((res) => res.json()).then((data) => setMessage(data.message));
-  }
-  function insertMany(){
-    fetch("http://localhost:8080/message").then((res) => res.json()).then((data) => setMessage(data.message));
-  }
 
-  return (
-    <div className="App">
-      <h1 align="center">MongoDB - Query Document</h1>
-      <br ></br>
-      <div className="content">
-        <div className="content-left">
-          <button onClick={findOne}>CreateDB</button>
-          <button onClick={findOne}>DropDB</button>
-          <button onClick={findOne}>CreateCollection</button>
-          <button onClick={findOne}>DropCollection</button>
-          <button onClick={findOne}>FindOne</button>
-          <button onClick={findMany}>FindMany</button>
-          <button onClick={deleteOne}>DeleteOne</button>
-          <button onClick={deleteMany}>DeleteMany</button>
-          <button onClick={insertOne}>InsertOne</button>
-          <button onClick={insertMany}>InsertMany</button>
-        </div>
+	return (
+	<>
+	<BrowserRouter>
+    <div className="content">
+      	<div className="content-left">
+			<br></br>
+			<br />
+			<br />
+			<br />
+			<img src="./image/mongo.png" ></img>
+			<div>
+				<NavLink to="/" style={{textDecoration:"none"}}>
+					Home
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/CreateDB" style={{textDecoration:"none"}}>
+					CreateDB
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/DropDB" style={{textDecoration:"none"}}>
+					DropDB
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/InsertOne" style={{textDecoration:"none"}}>
+					InsertOne
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/InsertMany" style={{textDecoration:"none"}} >
+					InsertMany
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/DeleteOne" style={{textDecoration:"none"}}>
+					DeleteOne
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/DeleteMany" style={{textDecoration:"none"}}>
+					DeleteMany
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/UpdateData" style={{textDecoration:"none"}}>
+					UpdateData
+				</NavLink>
+			</div>
+		</div>
         <div className="content-right">
-          <h1>{message}</h1>
-          <h1>message</h1>
-        </div>  
-      </div>    
+          <Routes >
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/CreateDB" element={<CreateDB />} />
+            <Route exact path="/DropDB" element={<DropDB />} />
+            <Route exact path="/InsertOne" element={<InsertOne />} />
+            <Route exact path="/InsertMany" element={<InsertMany />} />
+            <Route exact path="/DeleteOne" element={<DeleteOne />} />
+            <Route exact path="/DeleteMany" element={<DeleteMany />} />
+            <Route exact path="/UpdateData" element={<UpdateData />} />
+            <Route exact path="*" element={<NoPage />} />
+          </Routes>
+        </div>
     </div>
-  );
+	</BrowserRouter>
+	</>
+	);
 }
 
-export default App
+export default App;
