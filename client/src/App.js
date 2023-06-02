@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import "./App.css"
 import Home from "./components/Home";
+import ShowDB from "./components/ShowDB";
 import CreateDB from "./components/CreateDB";
 import DropDB from './components/DropDB';
 import InsertOne from "./components/InsertOne";
@@ -27,6 +28,11 @@ function App() {
 			<div>
 				<NavLink to="/" style={{textDecoration:"none"}}>
 					Home
+				</NavLink>
+			</div>
+			<div>
+				<NavLink to="/ShowDB" style={{textDecoration:"none"}}>
+					ShowDB
 				</NavLink>
 			</div>
 			<div>
@@ -68,6 +74,7 @@ function App() {
         <div className="content-right">
           <Routes >
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/ShowDB" element={<ShowDB />} />
             <Route exact path="/CreateDB" element={<CreateDB />} />
             <Route exact path="/DropDB" element={<DropDB />} />
             <Route exact path="/InsertOne" element={<InsertOne />} />
